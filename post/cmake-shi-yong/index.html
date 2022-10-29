@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>CMake使用 | 小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://wyh994.github.io/favicon.ico?v=1667062605970">
+<link rel="stylesheet" href="https://wyh994.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="构建工具进阶使用，了解并学会使用CMake！
+
+目录
+
+1 CMake是什么
+2 为什么要用CMake
+3 如何使用CMake
+
+1 CMake是什么
+2 为什么要用CMake
+3 如何使用CMake
+..." />
+    <meta name="keywords" content="编译构建" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://wyh994.github.io">
+        <img src="https://wyh994.github.io/images/avatar.png?v=1667062605970" class="site-logo">
+        <h1 class="site-title">小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://wyh994.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">CMake使用</h2>
+            <div class="post-date">2022-10-23</div>
+            
+              <div class="feature-container" style="background-image: url('https://wyh994.github.io/post-images/cmake-shi-yong.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>构建工具进阶使用，了解并学会使用CMake！</p>
+<!-- more -->
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#1-cmake%E6%98%AF%E4%BB%80%E4%B9%88">1 CMake是什么</a></li>
+<li><a href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8cmake">2 为什么要用CMake</a></li>
+<li><a href="#3-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8cmake">3 如何使用CMake</a></li>
+</ul>
+<h2 id="1-cmake是什么">1 CMake是什么</h2>
+<h2 id="2-为什么要用cmake">2 为什么要用CMake</h2>
+<h2 id="3-如何使用cmake">3 如何使用CMake</h2>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://wyh994.github.io/tag/kGv4O2VTy/" class="tag">
+                    编译构建
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://wyh994.github.io/post/make-shi-yong/">
+                  <h3 class="post-title">
+                    Make使用
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

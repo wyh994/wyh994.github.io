@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Make使用 | 小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://wyh994.github.io/favicon.ico?v=1667062605970">
+<link rel="stylesheet" href="https://wyh994.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="理清Make使用逻辑，学会使用Make！
+
+目录
+
+1 Make是什么
+2 为什么使用Make
+3 如何使用Make
+
+3.1 如何使用Make构建工程
+3.2 Make工作过程
+3.3 Makefile编写
+
+
+4 在线资源
+
+1 Mak..." />
+    <meta name="keywords" content="编译构建" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://wyh994.github.io">
+        <img src="https://wyh994.github.io/images/avatar.png?v=1667062605970" class="site-logo">
+        <h1 class="site-title">小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://wyh994.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Make使用</h2>
+            <div class="post-date">2022-10-23</div>
+            
+              <div class="feature-container" style="background-image: url('https://wyh994.github.io/post-images/make-shi-yong.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>理清Make使用逻辑，学会使用Make！</p>
+<!-- more -->
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#1-make%E6%98%AF%E4%BB%80%E4%B9%88">1 Make是什么</a></li>
+<li><a href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8make">2 为什么使用Make</a></li>
+<li><a href="#3-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8make">3 如何使用Make</a>
+<ul>
+<li><a href="#31-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8make%E6%9E%84%E5%BB%BA%E5%B7%A5%E7%A8%8B">3.1 如何使用Make构建工程</a></li>
+<li><a href="#32-make%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B">3.2 Make工作过程</a></li>
+<li><a href="#33-makefile%E7%BC%96%E5%86%99">3.3 Makefile编写</a></li>
+</ul>
+</li>
+<li><a href="#4-%E5%9C%A8%E7%BA%BF%E8%B5%84%E6%BA%90">4 在线资源</a></li>
+</ul>
+<h2 id="1-make是什么">1 Make是什么</h2>
+<ol>
+<li>Make是工程自动化构建工具。</li>
+<li>Make构建依赖Makefile管理脚本。</li>
+<li>Makefile核心语法就是构建规则，即目标、依赖、命令，其格式如下：</li>
+</ol>
+<pre><code>目标 ... : 依赖 ...
+    命令
+    ...
+
+注意：命令前的空格必须为Tab键
+</code></pre>
+<h2 id="2-为什么使用make">2 为什么使用Make</h2>
+<ol>
+<li>简化繁琐的人工构建操作，提升自动化程度。</li>
+<li>当工程较大，源文件数量较多时，手动管理整个工程中文件的编译链接等过程显得难以操作且不切实际。</li>
+</ol>
+<h2 id="3-如何使用make">3 如何使用Make</h2>
+<h3 id="31-如何使用make构建工程">3.1 如何使用Make构建工程</h3>
+<p>绝大部分情况下，使用Make构建工程时，只需要在工程顶层文件夹的命令行窗口下，执行<code>make</code>命令即可。</p>
+<h3 id="32-make工作过程">3.2 Make工作过程</h3>
+<p>执行<code>make</code>命令，即表示执行当前工程的构建工作。其具体构建的工作流程，如下：</p>
+<ol>
+<li>在当前文件夹下，查找文件Makefile或者makefile。</li>
+<li>查找Makefile中第一个目标，作为构建入口，同时也是工程构建的最终目标文件。</li>
+<li>查找目标对应构建规则，当目标文件不存在或者依赖文件比目标文件，执行命令生成以目标文件。</li>
+<li>当依赖文件不存在时，此时将依赖文件作为递归目标，递归进入第3步。</li>
+<li>构建生成工程最终目标文件。<br>
+<img src="https://wyh994.github.io/post-images/1666533543522.png" alt="" loading="lazy"></li>
+</ol>
+<h3 id="33-makefile编写">3.3 Makefile编写</h3>
+<h2 id="4-在线资源">4 在线资源</h2>
+<ul>
+<li><a href="https://seisman.github.io/how-to-write-makefile/">《跟我一起写Makefile》</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://wyh994.github.io/tag/kGv4O2VTy/" class="tag">
+                    编译构建
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
